@@ -3,4 +3,22 @@
     <p class="title">RapiDocs</p>
 </div>
 
-<input type="text">
+<div class="container-form" [formGroup]="formGroup">
+
+    <!-- Email -->
+    <ra-input
+        formControlName="email"
+        [label]="'E-mail'"
+        [placeholder]="'Digite seu email'"
+        [type]="'email'"
+    />
+
+    <!-- Password -->
+    <ra-input
+        formControlName="password"
+        [label]="'Senha'"
+        [placeholder]="'Digite sua senha'"
+        [type]="'password'"
+    />
+</div>
+

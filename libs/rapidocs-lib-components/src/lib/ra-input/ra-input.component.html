@@ -1,0 +1,69 @@
+<div class="input-container">
+
+    <!-- Label -->
+    @if (label())
+    {
+        <label
+            class="input-label">
+            <span>{{ label() }}</span>
+
+            @if (showRequiredOrOptional())
+            {
+                @if (isRequired())
+                {
+                    <span class="required">*</span>
+                }
+                @else
+                {
+                    <span class="optional">(opcional)</span>
+                }
+            }
+        </label>
+    }
+
+    <!-- Input wrapper -->
+    <div class="input-wrapper" [class.error]="hasError()">
+
+        <!-- Left icon -->
+        @if (leftIcon())
+        {
+            <i class="mr mr-{{ leftIcon() }} input-icon input-icon-left"></i>
+        }
+
+        <!-- Input -->
+        <input
+            [type]="type()"
+            [placeholder]="placeholder()"
+            [disabled]="disabled"
+            [min]="type() === 'number' ? '0' : null"
+            [maxlength]="limitCharacters() ?? null"
+            [(ngModel)]="value"
+            (input)="onInput($event)"
+            (keypress)="onKeyPress($event)"
+            (blur)="onTouched()"
+            class="input-field"
+        />
+
+        <!-- Right icon -->
+        @if (rightIcon() && !loading())
+        {
+            <i
+                class="mr mr-{{ rightIcon() }} input-icon input-icon-right"
+                (click)="rightIconClick.emit()">
+            </i>
+        }
+        @else if (loading())
+        {
+            <ra-loading class="input-icon input-icon-right" [size]="'small'" />
+        }
+    </div>
+
+    <!-- Limit characters -->
+    @if (limitCharacters())
+    {
+        <div class="container-limit-characters">
+            <i class="mr mr-warning-2"></i>
+            <p class="rapidocs-text-tertiary">{{ value.length }} de {{ limitCharacters() }} caracteres</p>
+        </div>
+    }
+</div>

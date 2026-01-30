@@ -1,0 +1,49 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+
+    .loading-circle {
+        border: 1px solid var(--borderPrimary);
+        border-top: 1px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+
+        &.size-small {
+            width: 10px;
+            height: 10px;
+            border-width: 2px;
+        }
+
+        &.size-medium {
+            width: 16px;
+            height: 16px;
+            border-width: 2px;
+        }
+
+        &.size-large {
+            width: 20px;
+            height: 20px;
+            border-width: 3px;
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loading-message {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--contentSecondary);
+    }
+}

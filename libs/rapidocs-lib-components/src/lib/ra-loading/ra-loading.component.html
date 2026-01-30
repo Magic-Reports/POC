@@ -1,0 +1,9 @@
+<div 
+    class="loading-circle" 
+    [class]="'size-' + size()" 
+    [style.marginTop]="marginTop() + 'px'">
+</div>
+
+@if (message()) {
+    <p class="loading-message">{{ message() }}</p>
+}

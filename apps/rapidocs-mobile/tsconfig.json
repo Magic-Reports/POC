@@ -1,6 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": "../../",
+    "paths": {
+      "@rapidocs/rapidocs-lib-components": ["libs/rapidocs-lib-components/src/index.ts"],
+      "@rapidocs/rapidocs-lib-domain": ["libs/rapidocs-lib-domain/src/index.ts"]
+    },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

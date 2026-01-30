@@ -1,0 +1,103 @@
+$radius: 8px;
+$border: 1px solid var(--borderPrimary);
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.input-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--contentSecondary);
+
+    .required {
+        margin-left: 6px;
+        color: var(--accentRed);
+    }
+
+    .optional {
+        margin-left: 6px;
+        color: var(--contentTertiary);
+    }
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .input-field {
+        padding: 0 12px;
+        box-sizing: border-box;
+        border: $border;
+        border-radius: $radius;
+        font-size: 14px;
+        width: 100%;
+        height: 55px;
+        transition: var(--transition-animation);
+
+        &::placeholder {
+            color: var(--contentTertiary);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+
+        &:disabled {
+            background-color: var(--backgroundSecondary);
+            cursor: not-allowed;
+        }
+    }
+
+    &.error .input-field {
+        border-color: var(--accentRed);
+
+        &:focus {
+            border-color: var(--accentRed);
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+        }
+    }
+
+    &:has(.input-icon-left) .input-field {
+        padding-left: 2.2rem;
+    }
+
+    &:has(.input-icon-right) .input-field {
+        padding-right: 2.2rem;
+    }
+
+    .input-icon {
+        position: absolute;
+        color: var(--contentTertiary);
+        font-size: 1rem;
+        pointer-events: none;
+
+        &-left {
+            left: 0.75rem;
+        }
+
+        &-right {
+            right: 0.75rem;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+    }
+}
+
+.container-limit-characters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--contentTertiary);
+
+    i {
+        font-size: 16px;
+    }
+}
