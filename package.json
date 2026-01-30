@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start-web": "nx serve rapidocs-web"
+    "start-web": "nx serve rapidocs-web",
+    "start-mobile": "nx serve rapidocs-mobile"
   },
   "private": true,
   "dependencies": {
