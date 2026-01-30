@@ -1,12 +1,4 @@
-import {
-    Component,
-    forwardRef,
-    inject,
-    Input,
-    input,
-    OnInit,
-    output,
-} from '@angular/core';
+import { Component, forwardRef, inject, Input, input, OnInit, output } from '@angular/core';
 import {
     ControlContainer,
     ControlValueAccessor,
@@ -35,11 +27,14 @@ export class RaInputComponent implements ControlValueAccessor, OnInit {
     public showRequiredOrOptional = input<boolean>(true);
     public formControlName = input<string>('');
     public formControl = input<FormControl | null>(null);
-    public id = input<string>('');
     public loading = input<boolean>(false);
     public label = input<string>('');
     public placeholder = input<string>('');
     public type = input<string>('text');
+    /** Ação da tecla Enter no teclado: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send' */
+    public enterKeyHint = input<
+        'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send'
+    >('done');
     public leftIcon = input<string>('');
     public rightIcon = input<string>('');
     public rightIconClick = output<void>();
@@ -69,9 +64,9 @@ export class RaInputComponent implements ControlValueAccessor, OnInit {
                     'formControlName requires a parent FormGroup. Use formControl instead.'
                 );
             }
-            const control = container.control?.get(
-                this.formControlName()
-            ) as FormControl | undefined;
+            const control = container.control?.get(this.formControlName()) as
+                | FormControl
+                | undefined;
             this.control = control ?? null;
             // Sincroniza o valor inicial do FormControl
             if (this.control && this.control.value != null) {
@@ -146,7 +141,53 @@ export class RaInputComponent implements ControlValueAccessor, OnInit {
         }
 
         if (event.key === 'Enter') {
+            const hint = this.enterKeyHint();
+            if (hint === 'next') {
+                this.focusNextFocusable(event);
+            } else if (hint === 'previous') {
+                this.focusPreviousFocusable(event);
+            }
             this.enterKeyPress.emit();
+        }
+    }
+
+    private getFocusableList(input: HTMLElement): HTMLElement[] {
+        const selector =
+            'input:not([type="hidden"]):not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        // Dentro de <form> usa o form
+        const form = (input as HTMLInputElement).form;
+        if (form) {
+            return Array.from(form.querySelectorAll<HTMLElement>(selector));
+        }
+        // Sem form (ex.: div com [formGroup]): sobe até achar um container com vários focusáveis
+        let el: HTMLElement | null = input;
+        while (el) {
+            const list = Array.from(el.querySelectorAll<HTMLElement>(selector));
+            if (list.length >= 2 && list.includes(input)) {
+                return list;
+            }
+            el = el.parentElement;
+        }
+        return [];
+    }
+
+    private focusNextFocusable(event: KeyboardEvent): void {
+        const input = event.target as HTMLInputElement;
+        const list = this.getFocusableList(input);
+        const idx = list.indexOf(input);
+        if (idx >= 0 && idx < list.length - 1) {
+            event.preventDefault();
+            list[idx + 1].focus();
+        }
+    }
+
+    private focusPreviousFocusable(event: KeyboardEvent): void {
+        const input = event.target as HTMLInputElement;
+        const list = this.getFocusableList(input);
+        const idx = list.indexOf(input);
+        if (idx > 0) {
+            event.preventDefault();
+            list[idx - 1].focus();
         }
     }
 }

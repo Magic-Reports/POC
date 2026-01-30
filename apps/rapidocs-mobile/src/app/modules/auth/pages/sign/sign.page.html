@@ -8,9 +8,11 @@
     <!-- Email -->
     <ra-input
         formControlName="email"
+        [type]="'email'"
         [label]="'E-mail'"
         [placeholder]="'Digite seu email'"
-        [type]="'email'"
+        [leftIcon]="'mail'"
+        [enterKeyHint]="'next'"
     />
 
     <!-- Password -->
@@ -19,6 +21,9 @@
         [label]="'Senha'"
         [placeholder]="'Digite sua senha'"
         [type]="'password'"
+        [leftIcon]="'lock'"
+        [rightIcon]="'eye'"
+        [enterKeyHint]="'done'"
     />
 </div>
 

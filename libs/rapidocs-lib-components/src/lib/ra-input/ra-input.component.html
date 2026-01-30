@@ -37,6 +37,7 @@
             [disabled]="disabled"
             [min]="type() === 'number' ? '0' : null"
             [maxlength]="limitCharacters() ?? null"
+            [attr.enterkeyhint]="enterKeyHint()"
             [(ngModel)]="value"
             (input)="onInput($event)"
             (keypress)="onKeyPress($event)"
