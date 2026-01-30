@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'public/styles/_global-style.scss';
+
+:root {
+    --safe-area-inset-top: 51px;
+    --safe-area-inset-bottom: 51px;
+}
+
+.safe-area-container {
+    padding-top: var(--safe-area-inset-top);
+    padding-bottom: var(--safe-area-inset-bottom);
+}

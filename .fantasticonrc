@@ -1,0 +1,17 @@
+{
+    "inputDir": "./public/icons",
+    "outputDir": "./public/icons/fonts",
+    "prefix": "mr",
+    "normalize": true,
+    "selector": "i",
+    "fontTypes": [
+        "woff2"
+    ],
+    "assetTypes": [
+        "html",
+        "css"
+    ],
+    "fontHeight": 1000,
+    "descent": 0,
+    "round": 10000000000000
+}

@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .container-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: calc(var(--safe-area-inset-top) + 62px);
+
+        img {
+            width: 60px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--contentPrimary);
+        }
+    }
+}

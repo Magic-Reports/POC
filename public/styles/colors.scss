@@ -1,0 +1,49 @@
+:root {
+    // Backgrounds
+    --backgroundSecondary: #f3f4f6;
+    --backgroundPrimary: #ffffff;
+    --backgroundModal: #000000ae;
+
+    // Content
+    --contentPrimary: #141515;
+    --contentSecondary: #4b5563;
+    --contentInverse: #ffffff;
+    --contentTertiary: #9ca3af;
+
+    // Actions
+    --actionDisableContent: #9ca3af;
+    --actionDisableBackground: #e5e7eb;
+
+    // Accent
+    --accentBlue: #2a89ef;
+    --accentBlueLight: #d4e7fc;
+    --accentGreen: #15be78;
+    --accentGreenLight: #d0f2e4;
+    --accentOrange: #ff850a;
+    --accentOrangeLight: #ffffe7ce;
+    --accentRed: #e04f4f;
+    --accentRedLight: #fee2e2;
+    --accentRedHover: #e04f4f50;
+
+    // Border
+    --borderPrimary: #d1d5db;
+    --borderSecondary: #e5e7eb;
+
+    // PRIMARY
+    --primary: #3381ff;
+
+    // Shadow
+    --shadowPrimary: #00000060;
+
+    // Alert
+    --alertWarning: #f9ab10;
+    --alertInformationLight: #e6f3ff;
+}
+
+// Colors
+.color-accent-red { color: var(--accentRed) !important }
+
+// Background
+.background-accent-red { background-color: var(--accentRed) !important }
+.background-accent-orange { background-color: var(--accentOrange) !important }
+.background-accent-gray { background-color: var(--actionDisableContent) !important }

@@ -1,1 +1,1 @@
-export * from './lib/rapidocs-lib-domain/rapidocs-lib-domain';
+export * from './lib/entities';
